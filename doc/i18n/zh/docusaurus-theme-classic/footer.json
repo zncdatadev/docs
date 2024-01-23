@@ -1,0 +1,26 @@
+{
+  "link.title.Document": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Document in the footer"
+  },
+  "link.title.Community": {
+    "message": "社区",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "更多",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Installation": {
+    "message": "安装",
+    "description": "The label of footer link with label=Installation linking to docs/quick-start/installation"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/zncdata-labs/zncdata-stack"
+  },
+  "copyright": {
+    "message": "Copyright © 2024 ZNCData labs. Built with Docusaurus.",
+    "description": "The footer copyright"
+  }
+}
