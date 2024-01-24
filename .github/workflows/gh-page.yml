@@ -2,12 +2,7 @@
 
 name: gh-page
 
-on:
-  push:
-    branches:
-    - main
-    - develop
-  pull_request:
+on: [push, pull_request]
 
 jobs:
 
