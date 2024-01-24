@@ -1,2 +1,2 @@
 
-# Service discovery
+# 服务配置自动发现

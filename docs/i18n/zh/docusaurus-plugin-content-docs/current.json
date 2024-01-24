@@ -11,28 +11,48 @@
     "message": "核心概念",
     "description": "The label for category Core Concepts in sidebar docs"
   },
-  "sidebar.docs.category.Configuration desgin": {
-    "message": "Configuration desgin",
-    "description": "The label for category Configuration desgin in sidebar docs"
+  "sidebar.docs.category.Common configuration mechanisms": {
+    "message": "通用配置",
+    "description": "The label for category Common configuration mechanisms in sidebar docs"
   },
   "sidebar.docs.category.Resources": {
-    "message": "Resources",
+    "message": "资源",
     "description": "The label for category Resources in sidebar docs"
   },
   "sidebar.docs.category.Connectivity": {
-    "message": "Connectivity",
+    "message": "连通性",
     "description": "The label for category Connectivity in sidebar docs"
   },
   "sidebar.docs.category.Security": {
-    "message": "Security",
+    "message": "安全",
     "description": "The label for category Security in sidebar docs"
   },
   "sidebar.docs.category.Operations": {
-    "message": "Operations",
+    "message": "操作",
     "description": "The label for category Operations in sidebar docs"
   },
   "sidebar.docs.category.Observability": {
-    "message": "Observability",
+    "message": "可观测性",
     "description": "The label for category Observability in sidebar docs"
+  },
+  "sidebar.docs.category.User manual": {
+    "message": "用户手册",
+    "description": "The label for category User manual in sidebar docs"
+  },
+  "sidebar.docs.category.environment": {
+    "message": "环境",
+    "description": "The label for category environment in sidebar docs"
+  },
+  "sidebar.docs.category.Operators": {
+    "message": "Operators",
+    "description": "The label for category Operators in sidebar docs"
+  },
+  "sidebar.docs.category.Develop manual": {
+    "message": "开发手册",
+    "description": "The label for category Develop manual in sidebar docs"
+  },
+  "sidebar.docs.category.Reference": {
+    "message": "参考",
+    "description": "The label for category Reference in sidebar docs"
   }
 }
