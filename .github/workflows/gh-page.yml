@@ -19,7 +19,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     defaults:
       run:
-        working-directory: doc
+        working-directory: docs
 
     steps:
     - uses: actions/checkout@v3
@@ -37,9 +37,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
-        key: ${{ runner.os }}-website-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-docs-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-website-
+          ${{ runner.os }}-docs-
 
     - run: yarn install --frozen-lockfile
     - run: yarn tsc
@@ -54,7 +54,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     defaults:
       run:
-        working-directory: doc
+        working-directory: docs
     steps:
     - uses: actions/checkout@v3
 
@@ -71,9 +71,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
-        key: ${{ runner.os }}-website-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-ddocsoc-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-website-
+          ${{ runner.os }}-docs-
 
     - run: yarn install --frozen-lockfile
     - run: yarn build
@@ -83,4 +83,4 @@ jobs:
       if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./website/build
+        publish_dir: ./docs/build
