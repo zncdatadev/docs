@@ -13,7 +13,7 @@
   },
   "link.item.label.Installation": {
     "message": "Installation",
-    "description": "The label of footer link with label=Installation linking to /docs/quick-start/installation"
+    "description": "The label of footer link with label=Installation linking to docs/quick-start/installation"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",

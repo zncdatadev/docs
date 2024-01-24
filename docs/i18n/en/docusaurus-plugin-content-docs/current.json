@@ -11,9 +11,9 @@
     "message": "Core Concepts",
     "description": "The label for category Core Concepts in sidebar docs"
   },
-  "sidebar.docs.category.Configuration desgin": {
-    "message": "Configuration desgin",
-    "description": "The label for category Configuration desgin in sidebar docs"
+  "sidebar.docs.category.Common configuration mechanisms": {
+    "message": "Common configuration mechanisms",
+    "description": "The label for category Common configuration mechanisms in sidebar docs"
   },
   "sidebar.docs.category.Resources": {
     "message": "Resources",
@@ -34,5 +34,25 @@
   "sidebar.docs.category.Observability": {
     "message": "Observability",
     "description": "The label for category Observability in sidebar docs"
+  },
+  "sidebar.docs.category.User manual": {
+    "message": "User manual",
+    "description": "The label for category User manual in sidebar docs"
+  },
+  "sidebar.docs.category.environment": {
+    "message": "environment",
+    "description": "The label for category environment in sidebar docs"
+  },
+  "sidebar.docs.category.Operators": {
+    "message": "Operators",
+    "description": "The label for category Operators in sidebar docs"
+  },
+  "sidebar.docs.category.Develop manual": {
+    "message": "Develop manual",
+    "description": "The label for category Develop manual in sidebar docs"
+  },
+  "sidebar.docs.category.Reference": {
+    "message": "Reference",
+    "description": "The label for category Reference in sidebar docs"
   }
 }

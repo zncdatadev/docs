@@ -31,7 +31,7 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
-  return <Redirect to="docs/quick-start/introduction" />
+  return <Redirect to="docs/" />
   // return (
   //   <Layout
   //     title={`Hello from ${siteConfig.title}`}
