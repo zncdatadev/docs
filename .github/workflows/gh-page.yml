@@ -6,9 +6,7 @@ on:
   push:
     branches:
     - main
-    paths:
-    - '.github/workflows/deploy.yml'
-    - 'doc/**'
+    - develop
   pull_request:
 
 jobs:
