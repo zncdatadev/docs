@@ -28,3 +28,21 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.markdown h1:first-child {
+  --ifm-h1-font-size: 2.0rem;
+}
+
+.markdown > h2 {
+  font-size: 1.4rem;
+}
+.markdown > h3 {
+  font-size: 1.2rem;
+}
+.markdown > h4 {
+  font-size: 1.0rem;
+}
+
+.theme-doc-sidebar-menu {
+  font-size: 0.8rem;
+}
