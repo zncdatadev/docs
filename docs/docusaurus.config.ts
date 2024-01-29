@@ -61,10 +61,10 @@ const config: Config = {
     image: 'img/docusaurus-social-card.jpg',
     algolia: {
       // The application ID provided by Algolia
-      appId: 'R8SJAAQL9L',
+      appId: 'CMFV2PO3C2',
       // Public API key: it is safe to commit it
-      apiKey: 'a173f58772523d06aa0b996ed9653def',
-      indexName: 'zncdata-stack',
+      apiKey: '42ae5bbd812922d63f06f4382b971f82',
+      indexName: 'zncdata',
     }, 
     navbar: {
       title: 'ZNCData Stack',
