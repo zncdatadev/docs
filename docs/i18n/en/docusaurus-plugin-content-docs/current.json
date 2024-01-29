@@ -47,9 +47,9 @@
     "message": "Operators",
     "description": "The label for category Operators in sidebar docs"
   },
-  "sidebar.docs.category.Develop manual": {
-    "message": "Develop manual",
-    "description": "The label for category Develop manual in sidebar docs"
+  "sidebar.docs.category.Developer manual": {
+    "message": "Developer manual",
+    "description": "The label for category Developer manual in sidebar docs"
   },
   "sidebar.docs.category.Reference": {
     "message": "Reference",

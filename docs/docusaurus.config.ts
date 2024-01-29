@@ -8,10 +8,10 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://zncdata-labs.github.io',
+  url: 'https://zncdata.dev/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/zncdata-stack',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -59,12 +59,20 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'R8SJAAQL9L',
+      // Public API key: it is safe to commit it
+      apiKey: 'a173f58772523d06aa0b996ed9653def',
+      indexName: 'zncdata-stack',
+    }, 
     navbar: {
       title: 'ZNCData Stack',
       logo: {
         alt: 'zncdata stack',
         src: 'img/favicon.ico',
       },
+ 
       items: [
         {
           type: 'docSidebar',
@@ -73,14 +81,15 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
-        },
-        {
           label: 'Languages',
           type: 'localeDropdown',
           position: 'right',
+        },
+        {
+          href: 'https://github.com/facebook/docusaurus',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
