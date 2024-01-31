@@ -63,7 +63,7 @@ const config: Config = {
       // The application ID provided by Algolia
       appId: 'CMFV2PO3C2',
       // Public API key: it is safe to commit it
-      apiKey: '42ae5bbd812922d63f06f4382b971f82',
+      apiKey: 'da65b3b76e4bd44b144bb962449ddffb',
       indexName: 'zncdata',
     }, 
     navbar: {
