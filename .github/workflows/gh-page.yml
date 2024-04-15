@@ -12,9 +12,6 @@ jobs:
       contents: read
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
-    defaults:
-      run:
-        working-directory: docs
 
     steps:
     - uses: actions/checkout@v3
@@ -47,9 +44,6 @@ jobs:
       contents: write
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
-    defaults:
-      run:
-        working-directory: docs
     steps:
     - uses: actions/checkout@v3
 
@@ -78,4 +72,4 @@ jobs:
       if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/build
+        publish_dir: ./build
