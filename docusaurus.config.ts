@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'ZNCData Stack',
-  tagline: 'zncdata stack',
+  title: 'KubeDataStack',
+  tagline: 'kube datastack',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -16,7 +16,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'ZNCData labs', // Usually your GitHub org/user name.
-  projectName: 'zncdata-stack', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -44,7 +44,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/zncdata-labs/zncdata-stack',
+          editUrl: 'https://github.com/zncdata-labs/docs',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           includeCurrentVersion: true,
@@ -67,9 +67,9 @@ const config: Config = {
       indexName: 'zncdata',
     }, 
     navbar: {
-      title: 'ZNCData Stack',
+      title: 'KubeDataStack',
       logo: {
-        alt: 'zncdata stack',
+        alt: 'kubedatastack',
         src: 'img/favicon.ico',
       },
  
@@ -115,7 +115,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/zncdata-labs/zncdata-stack',
+              href: 'https://github.com/zncdata-labs',
             },
           ],
         },
