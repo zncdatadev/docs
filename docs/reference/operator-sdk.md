@@ -71,7 +71,7 @@ Flags:
 Use "operator-sdk [command] --help" for more information about a command.
 ```
 
-## operator-sdk init
+### operator-sdk init
 
 这是一个初始化 operator 项目的脚手架命令，会创建一个完整 operator 项目结构，并包含一些默认的配置。
 
@@ -96,7 +96,7 @@ operator-sdk init --domain example.org --owner "john" --repo "github.com/john/ex
 - `cmd/main.go`: 运行控制器的主入口文件
 - `config/`: 一些与项目部署相关的 yaml 资源文件
 
-## operator-sdk create api
+### operator-sdk create api
 
 这是一个创建 kubernetes API 的脚手架命令。执行命令会创建一个新的 kubernetes API ，并生成相应的代码。
 
@@ -118,17 +118,3 @@ make manifests
 - `config/crd`: 生成 CRD 资源文件
 - `config/samples`: 生成 CRD 示例文件
 - `config/rbac`: 生成资源的 RBAC 规则文件。
-
-## operator-sdk create webhook
-
-## operator-sdk run
-
-## operator-sdk run bundle
-
-## operator-sdk cleanup
-
-## operator-sdk olm install
-
-## operator-sdk olm status
-
-## operator-sdk olm uninstall
