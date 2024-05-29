@@ -15,7 +15,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'ZNCData labs', // Usually your GitHub org/user name.
+  organizationName: 'zncdatadev', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -63,8 +63,27 @@ const config: Config = {
       // The application ID provided by Algolia
       appId: 'CMFV2PO3C2',
       // Public API key: it is safe to commit it
-      apiKey: 'da65b3b76e4bd44b144bb962449ddffb',
+      apiKey: '45b2515504bc6b7ec063dcef9d22e572',
       indexName: 'zncdata',
+      contextualSearch: true,
+      externalUrlRegex: 'zncdata.dev',
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+
+      //... other Algolia params
+      // ref: https://docsearch.algolia.com/docs/api/#searchparameters
     }, 
     navbar: {
       title: 'KubeDataStack',
