@@ -17,7 +17,7 @@
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/zncdata-labs/zncdata-stack"
+    "description": "The label of footer link with label=GitHub linking to https://github.com/zncdata.dev/zncdata-stack"
   },
   "copyright": {
     "message": "Copyright © 2024 ZNCData labs. Built with Docusaurus.",

@@ -25,7 +25,7 @@ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releas
 OLM 通过 [Subscription](https://olm.operatorframework.io/docs/concepts/subscriptions/) 来管理 Operator 的安装。我们可以通过创建一个 Subscription 来安装 hive-metastore-operator：
 
 ```yaml
-kubectl apply -f https://raw.githubusercontent.com/zncdata-labs/kubedatastack/main/examples/hive/olm-subscriptions.yaml
+kubectl apply -f https://raw.githubusercontent.com/zncdata.dev/kubedatastack/main/examples/hive/olm-subscriptions.yaml
 ```
 
 验证 operator 的 pod 是否正常运行：
@@ -47,7 +47,7 @@ kubectl create ns hive
 Hive 集群是通过 hive-operator 来管理的，我们可以通过创建一个 HiveCluster 对象来部署一个 Hive Metastore：
 
 ```yaml
-kubectl apply -f https://raw.githubusercontent.com/zncdata-labs/kubedatastack/main/examples/hive/hive-metastore.yaml
+kubectl apply -f https://raw.githubusercontent.com/zncdata.dev/kubedatastack/main/examples/hive/hive-metastore.yaml
 ```
 
 ## 查看 Hive Metastore
@@ -63,11 +63,11 @@ kubectl exec -it hive-metastore-0 -n hive -- bash
 运行下面命令，清理 hive 集群：
 
 ```bash
-kubectl delete -f https://raw.githubusercontent.com/zncdata-labs/kubedatastack/main/examples/hive/hive-cluster.yaml
+kubectl delete -f https://raw.githubusercontent.com/zncdata.dev/kubedatastack/main/examples/hive/hive-cluster.yaml
 ```
 
 运行下面命令，清理 operator：
 
 ```bash
-kubectl delete -f https://raw.githubusercontent.com/zncdata-labs/kubedatastack/main/examples/hive/olm-subscriptions.yaml
+kubectl delete -f https://raw.githubusercontent.com/zncdata.dev/kubedatastack/main/examples/hive/olm-subscriptions.yaml
 ```
