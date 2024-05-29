@@ -107,7 +107,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/zncdatadev/zncdata-stack',
+          href: 'https://github.com/zncdatadev/kubedatastack',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
