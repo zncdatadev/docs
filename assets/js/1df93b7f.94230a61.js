@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzncdata_stack=self.webpackChunkzncdata_stack||[]).push([[583],{8198:(t,a,s)=>{s.r(a),s.d(a,{default:()=>r});s(8774);var c=s(4586);s(1107);var n=s(6347),e=s(4848);function r(){const{siteConfig:t}=(0,c.A)();return(0,e.jsx)(n.rd,{to:"docs/"})}}}]);
