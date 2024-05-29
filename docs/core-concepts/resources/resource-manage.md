@@ -1,5 +1,5 @@
 
-# Resource manage
+# 资源管理
 
 datastack 通过 operator 以 StatefulSets 或者 DaemonSets 的方式部署产品组件程序。为了满足不同场景和需求，可以通过资管管理指定程序运行时请求的 CPU 和内存资源，也可以限制其使用上限。
 
