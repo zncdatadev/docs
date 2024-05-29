@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'KubeDataStack',
-  tagline: 'kube datastack',
+  tagline: 'kubedatastack',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -44,7 +44,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/zncdata-labs/docs',
+          editUrl: 'https://github.com/zncdatadev/docs',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           includeCurrentVersion: true,
@@ -86,7 +86,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/zncdata-labs/zncdata-stack',
+          href: 'https://github.com/zncdatadev/zncdata-stack',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
@@ -115,12 +115,12 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/zncdata-labs',
+              href: 'https://github.com/zncdatadev',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} ZNCData labs. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} zncdata.dev. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
