@@ -1,19 +1,25 @@
 ---
-title: 角色和角色组
+title: Roles and Role Groups
 ---
 
-在软件程序中，一个程序会由多个不同的进程组成，每个进程都有自己的职责。每一个独立的进程定义为角色，角色可以存在多个，一个角色的多副本被称为角色组。角色组是一个逻辑概念，它代表了一个角色的多个实例。角色组的目的是为了提供高可用性和容错能力。
+In a software program, a program consists of multiple different processes, each with its own responsibilities.
+Each independent process is defined as a role, and there can be multiple instances of a role. Multiple instances of a role are called a role group.
+A role group is a logical concept that represents multiple instances of a role. The purpose of a role group is to provide high availability and fault tolerance.
 
-一个角色可以根据不同情况定义多个角色组。例如，一个角色可以有两个角色组，一个角色组在机房A，另一个角色组在机房B。这样，即使机房A发生故障，机房B中的角色组仍然可以继续工作。或者根据不同资源的不同需求，一个角色可以有多个角色组，一个角色组使用SSD，另一个角色组使用HDD。
+A role can define multiple role groups based on different situations. For example, a role can have two role groups, one in Data Center A and another in Data Center B.
+This way, even if Data Center A fails, the role group in Data Center B can continue to work. Or, based on different resource requirements,
+a role can have multiple role groups, one using SSD and another using HDD.
 
-角色和角色组可以满足一下需求：
+Roles and role groups can meet the following needs:
 
-- 配置：根据业务需求为角色定义不同配置的角色组。如：内存，CPU，磁盘，或者程序的配置。
-- 调度：根据业务需求为角色定义不同调度的角色组。如：机房，网络，或者资源的调度。
+- Configuration: Define role groups with different configurations for roles based on business needs, such as memory, CPU, disk, or program configuration.
+- Scheduling: Define role groups with different scheduling for roles based on business needs, such as data center, network, or resource scheduling.
 
-## 示例
+## Example
 
-以 HDFS 为例，HDFS 有多个角色，如 NameNode，DataNode，JournalNode。其中，DataNode 是一个角色，DataNode 的多个实例组成一个角色组。NameNode 也是一个角色，NameNode 的多个实例组成一个角色组。可以根据业务需求为 NameNode 和 DataNode 定义不同配置的角色组。
+Take HDFS as an example. HDFS has multiple roles, such as NameNode, DataNode, and JournalNode. Among them, DataNode is a role,
+and multiple instances of DataNode form a role group. NameNode is also a role, and multiple instances of NameNode form a role group.
+Different configurations of role groups can be defined for NameNode and DataNode based on business needs.
 
 ```yaml
 apiVersion: hdfs.kubedoop.dev/v1alpha1
@@ -28,7 +34,7 @@ metadata:
   name: hdfscluster-sample
 spec:
   image:
-    repository: qury.io/zncdata/hadoop
+    repository: qury.io/zncdatadev/hadoop
     tag: 3.3.4
   clusterConfig:
     zookeeperDiscoveryZNode: sample-hdfs
@@ -53,9 +59,9 @@ spec:
         replicas: 3
 ```
 
-在上述示例中，我们定义了：
+In the above example, we have defined:
 
-- 一个 HDFS 集群，包含了 NameNode，DataNode，JournalNode 三个角色。
-- NameNode 有一个角色组，包含两个实例。
-- DataNode 有一个角色组，包含三个实例，每个实例的 CPU 最小 1，最大 2，内存限制 3Gi。
-- JournalNode 有一个角色组，包含三个实例。
+- An HDFS cluster that includes three roles: NameNode, DataNode, and JournalNode.
+- NameNode has a role group with two instances.
+- DataNode has a role group with three instances, each with a minimum CPU of 1, a maximum CPU of 2, and a memory limit of 3Gi.
+- JournalNode has a role group with three instances.

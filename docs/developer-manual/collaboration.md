@@ -1,47 +1,51 @@
+# Collaboration Guide
 
-# 协作指南
+This document will guide you on how to contribute to ZNCDataDev. Please take some time to read the details before contributing code.
 
-本文会指导你如何为 ZNCData Labs 贡献一份自己的力量，在贡献代码之前，请花点时间阅读一下细节。
+## Code of Conduct
 
-## 行为准则
+We have a [Code of Conduct](https://github.com/kubedoop.dev/docs.git/CODE_OF_CONDUCT.md) that we hope all contributors will follow.
+Please take the time to read it in full to ensure you understand what is acceptable and what is not.
 
-我们有一份[行为准则](https://github.com/kubedoop.dev/zncdata-stack.git/CODE_OF_CONDUCT.md)，希望所有的贡献者都能遵守，请花时间阅读一遍全文以确保你能明白哪些是可以做的，哪些是不可以做的。
+## Branch Management
 
-## 分支管理
+We maintain the main branch (`main`) and release branches (`release-x.x`) for the long term. The main branch contains the latest code,
+and we periodically merge new features and functionalities into it, so it may have some bugs and instability.
+When the main branch accumulates enough features or reaches a point in the release roadmap, we will create a new release branch from the main branch.
+We will test and fix bugs on the release branch until it stabilizes, then merge it back into the main branch and release a new version.
 
-我们长期维护主分支（`main`）和发布分支（`release-x.x`）。主分支是最新的代码，我们会不定期将新特性和功能合并到主分支，所以主分支会有一些 BUG 和不稳定的地方。
-当主分支经历一个阶段的功能积累时，或者在发布路线图中的某个时机点，我们会从主分支切出一个新的发布分支，并在发布分支上进行测试和修复 BUG，直到发布分支稳定后，
-我们会将发布分支合并到主分支，并发布一个新的版本。
+Before contributing code, please determine whether you are fixing a bug for a specific version or developing a new feature. If fixing a bug,
+develop on a `fix/` prefix branch and merge it into the release branch for that version. We will release a `patch` version at an appropriate time.
+If developing a new feature, develop on a `feature/` prefix branch and merge it into the main branch.
 
-在贡献代码之前请确定你是修复某一个版本的 BUG，还是在开发新的功能。如果修复 BUG，请基于 `fix/` 前缀分支开发后合并到该版本的发布分支。我们会在合适的时间发布 `patch` 版本。
-如果是开发新的功能，请基于 `feature/` 前缀分支开发后合并到主分支。
+## First Contribution
 
-## 第一次贡献
-
-如果你是第一次贡献代码，请参考[第一次贡献](./first-commiter.md) 快速开始。
+If this is your first time contributing code, please refer to [First Contribution](./first-commiter.md) to get started quickly.
 
 ## Pull Request
 
-我们使用 Pull Request 来进行代码的合并，如果你不熟悉 Pull Request 的使用，请参考 [Github 官方文档](https://docs.github.com/cn/github/collaborating-with-issues-and-pull-requests/about-pull-requests)。
+We use Pull Requests to merge code. If you are not familiar with Pull Requests,
+please refer to the [GitHub Documentation](https://docs.github.com/cn/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
 
-我们会及时关注 Pull Request，并合并，也有可能在代码评审后要求你最一些修改再合并。如果你的 Pull Request 没有及时得到回复，请在我们的社区中提出来，我们会尽快处理。
+We will review and merge Pull Requests in a timely manner, but we may ask you to make some modifications after code review before merging.
+If your Pull Request is not responded to promptly, please raise it in our community, and we will address it as soon as possible.
 
-在提交 Pull Request 之前，请检查一下清单：
+Before submitting a Pull Request, please check the following list:
 
-- 基于正确的分支开发
-- 执行 `pre-commit` 并确保没有异常
-- 代码提交信息遵循提交规范
-- 确保所有 Github CI 检查通过，如果失败，请查看原因并修改。
+- Develop based on the correct branch
+- Run `pre-commit` and ensure there are no issues
+- Follow the commit message conventions
+- Ensure all GitHub CI checks pass; if they fail, review the reasons and make corrections
 
-在所有问题都解决后，发起 Pull Request。
+Once all issues are resolved, submit the Pull Request.
 
-## 提交信息规范
+## Commit Message Conventions
 
-清晰易读的提交信息有助于问题排查，也有利于自动生成 CHANGELOG，所以我们要求所有的提交信息都遵循以下规范：
+Clear and readable commit messages help with issue tracking and facilitate the automatic generation of CHANGELOGs. Therefore, we require all commit messages to follow these conventions:
 
-### 提交信息格式
+### Commit Message Format
 
-每条提交消息均由标题、正文和页脚组成。标头具有特殊格式，包括类型、范围和主题：
+Each commit message consists of a header, body, and footer. The header has a special format that includes the type, scope, and subject:
 
 ```text
 <type>(<scope>): <subject>
@@ -51,11 +55,11 @@
 <footer>
 ```
 
-其中，**标题是必需的，正文和页脚是可选的**。
+The **header is mandatory, while the body and footer are optional**.
 
-提交消息的任何行都不能超过 100 个字符！这使得该消息在 GitHub 以及各种 git 工具中更容易阅读。
+No line in the commit message should exceed 100 characters! This makes the message easier to read in GitHub and various git tools.
 
-示例提交：
+Example commits:
 
 ```text
 docs(changelog): update changelog to beta.5
@@ -67,38 +71,38 @@ fix(release): need to depend on latest rxjs and zone.js
 The version in our package.json gets copied to the one we publish, and users need the latest of these.
 ```
 
-#### 范围（scope）
+#### Scope
 
-范围时可选的，用于标识提交的影响范围。例如，变更内容是某个模块，或者某种类型的任务等。
+The scope is optional and is used to identify the area affected by the commit. For example, the change might be related to a specific module or type of task.
 
-#### 类型（type）
+#### Type
 
-- build: 影响构建系统或外部依赖的更改(示例范围:gulp、broccoli、npm)
-- ci: 更改CI配置文件和脚本(示例范围:Travis, Circle, BrowserStack, SauceLabs)
-- docs: 仅文档更改
-- feat: 新功能
-- fix: 修复bug
-- perf: 改进性能的代码更改
-- refactor: 代码更改既不修复错误也不添加功能
-- style: 不影响代码含义的更改(空格、格式、缺少分号等)
-- test: 添加缺失测试或更正现有测试
+- build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- docs: Documentation only changes
+- feat: A new feature
+- fix: A bug fix
+- perf: A code change that improves performance
+- refactor: A code change that neither fixes a bug nor adds a feature
+- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- test: Adding missing tests or correcting existing tests
 
-#### 主题 （subject）
+#### Subject
 
-该主题包含对更改的简洁描述：
+The subject contains a succinct description of the change:
 
-- 使用祈使句、现在时：“change”而不是“changed”或“changes”
-- 不要将第一个字母大写
-- 末尾没有点 (.)
+- Use the imperative, present tense: “change” not “changed” nor “changes”
+- Do not capitalize the first letter
+- No dot (.) at the end
 
-#### 正文（body）
+#### Body
 
-正如在主语中一样，使用祈使式、现在时：“change”而不是“changed”或“changes”。正文应包括改变的动机，并将其与以前的行为进行对比。
+Just as in the subject, use the imperative, present tense: “change” not “changed” nor “changes”. The body should include the motivation for the change and contrast this with previous behavior.
 
-#### 页脚（footer）
+#### Footer
 
-页脚应包含有关重大更改的所有信息，也是引用此提交关闭的GitHub 问题的位置。
+The footer should contain any information about breaking changes and is also the place to reference GitHub issues that this commit closes.
 
-重大变更BREAKING CHANGE:应以带有空格或两个换行符的单词开头。然后，提交消息的其余部分将用于此目的。
+Breaking changes should start with the word BREAKING CHANGE: with a space or two newlines. The rest of the commit message is then used for this.
 
-详细的解释可以在这个文档中找到。
+A detailed explanation can be found in this document.

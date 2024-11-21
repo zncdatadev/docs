@@ -2,6 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+
 const config: Config = {
   title: 'Kubedoop Platform',
   tagline: 'Kubedoop Platform Documentation',
@@ -29,8 +30,11 @@ const config: Config = {
     locales: ['en', 'zh'],
     path: 'i18n',
     localeConfigs: {
+      en: {
+        htmlLang: 'en-GB',
+      },
       zh: {
-        label: '简体中文',
+        label: '中文',
         direction: 'ltr',
         htmlLang: 'zh-cmn-Hans',
         path: 'zh',
@@ -42,6 +46,7 @@ const config: Config = {
     [
       'classic',
       {
+        debug: true, // force debug plugin usage
         docs: {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.

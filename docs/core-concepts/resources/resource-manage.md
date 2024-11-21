@@ -1,37 +1,42 @@
+# Resource Management
 
-# 资源管理
+datastack deploys product component programs through operator in the form of StatefulSets or DaemonSets.
+To meet different scenarios and needs, you can manage the CPU and memory resources requested by the specified program at runtime through resource management,
+and you can also limit its usage.
 
-datastack 通过 operator 以 StatefulSets 或者 DaemonSets 的方式部署产品组件程序。为了满足不同场景和需求，可以通过资管管理指定程序运行时请求的 CPU 和内存资源，也可以限制其使用上限。
+## Terminology
 
-## 名词解释
-
-资源管理是定义 CPU 、 内存（RAM）、存储（storage）三种资源类型。
+Resource management defines three types of resources: CPU, memory (RAM), and storage.
 
 ### CPU
 
 #### min
 
-CPU 请求是程序运行时请求的 CPU 资源。CPU 请求是程序运行时的最小 CPU 资源需求。如果程序请求的 CPU 资源超过节点的 CPU 资源，程序将无法运行。
+CPU request is the CPU resource requested by the program at runtime. The CPU request is the minimum CPU resource requirement for the program to run.
+If the CPU resources requested by the program exceed the CPU resources of the node, the program will not be able to run.
 
 #### max
 
-CPU 限制是程序运行时的 CPU 资源上限。如果程序使用的 CPU 资源超过限制，程序将被 Kubernetes 限制，但不会被终止。
+CPU limit is the upper limit of CPU resources for the program at runtime. If the CPU resources used by the program exceed the limit, the program will be restricted by Kubernetes but will not be terminated.
 
-### 内存
+### Memory
 
 #### limit
 
-内存限制是程序运行时的内存资源上限。如果程序使用的内存资源超过限制，程序将被 Kubernetes 限制，程序会被终止。为了避免程序被终止，需要根据程序的实际内存使用情况设置合理的内存限制。
+Memory limit is the upper limit of memory resources for the program at runtime. If the memory resources used by the program exceed the limit,
+the program will be restricted by Kubernetes and the program will be terminated. To avoid the program being terminated,
+it is necessary to set a reasonable memory limit based on the actual memory usage of the program.
 
-### 存储
+### Storage
 
-存储是程序运行时请求的存储空间。指定的存储大小是通过 PVC（Persistent Volume Claim）来为程序分配一个最大可用的存储空间。
+Storage is the storage space requested by the program at runtime. The specified storage size is allocated to the program through PVC (Persistent Volume Claim) as the maximum available storage space.
 
-## 资源请求
+## Resource Requests
 
-在角色和角色组中，都可以使用 `resource` 定义资源配置。其中角色级别的资源配置会覆盖角色组级别的资源配置。而角色组级别的资源配置会覆盖角色级别的资源配置。
+In roles and role groups, you can use `resource` to define resource configurations. The resource configuration at the role level will override the
+resource configuration at the role group level. The resource configuration at the role group level will override the resource configuration at the role level.
 
-### CPU 和内存
+### CPU and Memory
 
 ```yaml
 apiVersion: hdfs.kubedoop.dev/v1alpha1
@@ -60,15 +65,15 @@ spec:
               limit: "2Gi"
 ```
 
-在上述示例中，我们定义了：
+In the above example, we defined:
 
-- 一个 HDFS 集群，包含了 NameNode 一个角色。
-- NameNode 有两个角色组，rg-1 和 rg-2。
-- Namenode 角色定义每个实例的 CPU 最小 1，最大 2，内存限制 1Gi。
-- rg-1 角色组包含两个实例，每个实例的 CPU 最小 1，最大 2，内存限制 1Gi。继承自角色的配置。
-- rg-2 角色组包含两个实例，每个实例的 CPU 最小 2，最大 4，内存限制 2Gi。使用角色组的配置，覆盖了角色的配置。
+- An HDFS cluster, which includes a NameNode role.
+- The NameNode has two role groups, rg-1 and rg-2.
+- The NameNode role defines a minimum CPU of 1, a maximum of 2, and a memory limit of 1Gi for each instance.
+- The rg-1 role group contains two instances, each with a minimum CPU of 1, a maximum of 2, and a memory limit of 1Gi. Inherited from the role configuration.
+- The rg-2 role group contains two instances, each with a minimum CPU of 2, a maximum of 4, and a memory limit of 2Gi. Uses the role group configuration, overriding the role configuration.
 
-### 存储配置
+### Storage Configuration
 
 ```yaml
 apiVersion: hdfs.kubedoop.dev/v1alpha1
@@ -93,21 +98,22 @@ spec:
                 capacity: 20Gi
 ```
 
-在上述示例中，我们定义了：
+In the above example, we defined:
 
-- 一个 HDFS 集群，包含了 NameNode 一个角色。
-- NameNode 有两个角色组，rg-1 和 rg-2。
-- Namenode 角色定义每个实例的 `data` 存储容量 10Gi。
-- rg-1 角色组包含两个实例，每个实例的 `data` 存储容量 10Gi。继承自角色的配置。
-- rg-2 角色组包含两个实例，每个实例的 `data` 存储容量 20Gi。使用角色组的配置，覆盖了角色的配置。
+- An HDFS cluster, which includes a NameNode role.
+- The NameNode has two role groups, rg-1 and rg-2.
+- The NameNode role defines a `data` storage capacity of 10Gi for each instance.
+- The rg-1 role group contains two instances, each with a `data` storage capacity of 10Gi. Inherited from the role configuration.
+- The rg-2 role group contains two instances, each with a `data` storage capacity of 20Gi. Uses the role group configuration, overriding the role configuration.
 
-#### 存储累
+#### Storage Class
 
-存储的底层技术是通过 kubernetes 的 StorageClass 来实现的。可以配置不同特性的的存储类，灵活的为程序分配存储空间。如使用 SSD 存储，HDD 存储，或者 NFS 存储的存储类。
+The underlying technology of storage is implemented through Kubernetes' StorageClass. Different types of storage classes can be configured
+to flexibly allocate storage space for programs, such as using SSD storage, HDD storage, or NFS storage classes.
 
-在 `storage` 中 StorageClass 不是强制的，如果没有配置，则使用集群中默认的 StorageClass 。
+In `storage`, StorageClass is not mandatory. If not configured, the default StorageClass in the cluster will be used.
 
-配置示例：
+Configuration example:
 
 ```yaml
 ...
