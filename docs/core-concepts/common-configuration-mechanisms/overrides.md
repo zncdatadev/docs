@@ -10,7 +10,7 @@
 在角色和角色组中，可以使用 `configOverrides` 字段覆盖默认配置。
 
 ```yaml
-apiVersion: hdfs.zncdata.dev/v1alpha1
+apiVersion: hdfs.kubedoop.dev/v1alpha1
 kind: HdfsCluster
 metadata:
   labels:
@@ -48,7 +48,7 @@ spec:
 在角色和角色组中，可以使用 `envOverrides` 字段覆盖默认环境变量。
 
 ```yaml
-apiVersion: hdfs.zncdata.dev/v1alpha1
+apiVersion: hdfs.kubedoop.dev/v1alpha1
 kind: HdfsCluster
 metadata:
   labels:
@@ -82,7 +82,7 @@ spec:
 在角色和角色组中，可以使用 `commandOverrides` 字段覆盖默认命令行参数。
 
 ```yaml
-apiVersion: hdfs.zncdata.dev/v1alpha1
+apiVersion: hdfs.kubedoop.dev/v1alpha1
 kind: HdfsCluster
 metadata:
   labels:
@@ -113,7 +113,7 @@ spec:
 在角色和角色组中，可以使用 `podTemplateOverrides` 字段覆盖默认 pod 模板。
 
 ```yaml
-apiVersion: hdfs.zncdata.dev/v1alpha1
+apiVersion: hdfs.kubedoop.dev/v1alpha1
 kind: HdfsCluster
 metadata:
   labels:

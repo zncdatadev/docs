@@ -16,7 +16,7 @@ title: 角色和角色组
 以 HDFS 为例，HDFS 有多个角色，如 NameNode，DataNode，JournalNode。其中，DataNode 是一个角色，DataNode 的多个实例组成一个角色组。NameNode 也是一个角色，NameNode 的多个实例组成一个角色组。可以根据业务需求为 NameNode 和 DataNode 定义不同配置的角色组。
 
 ```yaml
-apiVersion: hdfs.zncdata.dev/v1alpha1
+apiVersion: hdfs.kubedoop.dev/v1alpha1
 kind: HdfsCluster
 metadata:
   labels:
