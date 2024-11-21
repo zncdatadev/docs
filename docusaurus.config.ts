@@ -8,7 +8,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://zncdata.dev/',
+  url: 'https://kubedoop.dev/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -68,7 +68,7 @@ const config: Config = {
       apiKey: '45b2515504bc6b7ec063dcef9d22e572',
       indexName: 'zncdata',
       contextualSearch: true,
-      externalUrlRegex: 'zncdata.dev',
+      externalUrlRegex: 'kubedoop.dev',
       // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
       replaceSearchResultPathname: {
         from: '/docs/', // or as RegExp: /\/docs\//
@@ -141,7 +141,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} zncdata.dev. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} kubedoop.dev. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

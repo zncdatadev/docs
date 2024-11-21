@@ -18,7 +18,7 @@ git clone https://github.com/<your_name>/zncdata-stack
 将本地个人仓库和上游仓库关联
 
 ```bash
-git remote add upstream https://github.com/zncdata.dev/zncdata-stack
+git remote add upstream https://github.com/kubedoop.dev/zncdata-stack
 ```
 
 同步最新源代码

@@ -20,7 +20,7 @@
     "description": "The label of footer link with label=GitHub linking to https://github.com/zncdatadev"
   },
   "copyright": {
-    "message": "Copyright © 2024 zncdata.dev. Built with Docusaurus.",
+    "message": "Copyright © 2024 kubedoop.dev. Built with Docusaurus.",
     "description": "The footer copyright"
   }
 }

@@ -34,7 +34,7 @@ CPU 限制是程序运行时的 CPU 资源上限。如果程序使用的 CPU 资
 ### CPU 和内存
 
 ```yaml
-apiVersion: hdfs.zncdata.dev/v1alpha1
+apiVersion: hdfs.kubedoop.dev/v1alpha1
 kind: HdfsCluster
   name: hdfscluster-sample
 spec:
@@ -71,7 +71,7 @@ spec:
 ### 存储配置
 
 ```yaml
-apiVersion: hdfs.zncdata.dev/v1alpha1
+apiVersion: hdfs.kubedoop.dev/v1alpha1
 kind: HdfsCluster
   name: hdfscluster-sample
 spec:
