@@ -6,5 +6,13 @@
   "item.label.Languages": {
     "message": "Languages",
     "description": "Navbar item with label Languages"
+  },
+  "title": {
+    "message": "Kubedoop Platform",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Kubedoop Platform",
+    "description": "The alt text of navbar logo"
   }
 }

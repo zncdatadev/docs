@@ -20,7 +20,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Quick Start',
       items: [
-        'quick-start/introduction',
+        'introduction',
         'quick-start/installation',
       ],
     },

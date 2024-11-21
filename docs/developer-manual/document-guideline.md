@@ -1,17 +1,20 @@
+# Document Writing Guidelines
 
-# 文档编写指南
+If you want to participate in document writing, please read this document to understand the basic norms of document writing.
 
-如果你想要参与文档编写，请阅读本文档，了解文档编写的基本规范。
+The project documentation is built based on [docusaurus](https://docusaurus.io/), and the documentation source code is located in the `docs` directory.
 
-项目文档是基于 [docusaurus](https://docusaurus.io/) 构建的，文档源码位于 `docs` 目录下。
+The default language of the current document is English, and it now supports both Chinese and English. If you need to contribute English documents, 
+you can write directly in the `docs` directory. If you contribute Chinese documents, you need to write in the `i18n/zh/docusaurus-plugin-content-docs` directory.
+After writing, please run `yarn write-translations --locale zh` to generate the Chinese internationalization configuration, 
+and then adjust the Chinese internationalization configuration in `i18n/zh`.
 
-当前文档语言默认是中文，且现在支持中文和英文两种语言，如果需要贡献中文文档，可以直接在 `docs`中编写，并在编写完成后，
-运行 `yarn write-translations --locale zh` 生成中文国际化配置，然后调整 `i18n/zh` 的中文国际化配置。
+## Writing Norms
 
-## 编写规范
+When writing documents, you need to clearly follow the following norms:
 
-在编写文档时，需要明确遵循一下几点规范：
+- Documents are written in Markdown, with the file extension `.md`.
+- Document filenames are named in English and must be semantically meaningful, such as `document-guideline.md`.
+- English words in document filenames are connected with `-`, not `_`. Since document filenames will be part of the URL, it is necessary to ensure the readability of the URL.
 
-- 文档基于 Markdown 编写，文件后缀名为 `.md`。
-- 文档文件名以英文命名，须符合语义，如 `document-guideline.md`。
-- 文档文件名中的英文单词使用 `-` 连接，不要使用 `_` 连接。因为文档文件名会作为 URL 的一部分，所以需要保证 URL 的可读性。
+TODO
