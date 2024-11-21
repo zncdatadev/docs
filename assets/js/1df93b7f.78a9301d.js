@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkubedoop=self.webpackChunkkubedoop||[]).push([[583],{8198:(e,o,s)=>{s.r(o),s.d(o,{default:()=>r});s(8774);var u=s(4586);s(1107);var t=s(6347),n=s(4848);function r(){const{siteConfig:e}=(0,u.A)();return(0,n.jsx)(t.rd,{to:"docs/"})}}}]);
