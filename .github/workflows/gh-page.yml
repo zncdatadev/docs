@@ -6,70 +6,67 @@ on: [push, pull_request]
 
 jobs:
 
-  lint-tsc:
-    runs-on: ubuntu-22.04
-    permissions:
-      contents: read
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Setup Node
-      uses: actions/setup-node@v3
+    - name: Checkout Code
+      uses: actions/checkout@v4
       with:
-        node-version: '18'
-
-    - name: Get yarn cache
-      id: yarn-cache
-      run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> "${GITHUB_OUTPUT}"
-
-    - name: Cache dependencies
-      uses: actions/cache@v3
+        fetch-depth: 0
+    - name: markdownlint-cli2-action
+      uses: DavidAnson/markdownlint-cli2-action@v18.0.0
       with:
-        path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
-        key: ${{ runner.os }}-docs-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-docs-
-
-    - run: yarn install --frozen-lockfile
-    - run: yarn tsc
+        globs: |
+          README.md
+          CHANGELOG.md
+          docs/*.md
+  
+  typescript-lint:
+    name: TypeScript Lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - name: Install Dependencies
+      run: npm install
+    - name: TypeScript Lint
+      run: npm run typecheck
 
   deploy:
     needs:
-    - lint-tsc
-    runs-on: ubuntu-22.04
+      - markdown-lint
+      - typescript-lint
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+    
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+            node-version: '22'
 
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-
-    - name: Get yarn cache
-      id: yarn-cache
-      run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> "${GITHUB_OUTPUT}"
-
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
-        key: ${{ runner.os }}-docs-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-docs-
-
-    - run: yarn install --frozen-lockfile
-    - run: yarn build
-
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+      - name: Install dependencies
+        run: npm install
+    
+      - name: Build Docusaurus site
+        run: npm run build
+    
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
