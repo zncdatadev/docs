@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'KubeDataStack',
-  tagline: 'kubedatastack',
+  title: 'Kubedoop Platform',
+  tagline: 'Kubedoop Platform Documentation',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -40,7 +40,7 @@ const config: Config = {
 
   presets: [
     [
-      '@docusaurus/preset-classic',
+      'classic',
       {
         docs: {
           sidebarPath: './sidebars.ts',
@@ -61,36 +61,10 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
-    algolia: {
-      // The application ID provided by Algolia
-      appId: 'CMFV2PO3C2',
-      // Public API key: it is safe to commit it
-      apiKey: '45b2515504bc6b7ec063dcef9d22e572',
-      indexName: 'zncdata',
-      contextualSearch: true,
-      externalUrlRegex: 'kubedoop.dev',
-      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-      replaceSearchResultPathname: {
-        from: '/docs/', // or as RegExp: /\/docs\//
-        to: '/',
-      },
-
-      // Optional: Algolia search parameters
-      searchParameters: {},
-
-      // Optional: path for search page that enabled by default (`false` to disable it)
-      searchPagePath: 'search',
-
-      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-      insights: false,
-
-      //... other Algolia params
-      // ref: https://docsearch.algolia.com/docs/api/#searchparameters
-    }, 
     navbar: {
-      title: 'KubeDataStack',
+      title: 'Kubedoop Platform',
       logo: {
-        alt: 'kubedatastack',
+        alt: 'Kubedoop Platform',
         src: 'img/favicon.ico',
       },
  
@@ -107,9 +81,9 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/zncdatadev/kubedatastack',
+          href: 'https://github.com/zncdatadev/kubedoop',
           position: 'right',
-          className: 'header-github-link',
+          className: "header-icon-link header-github-link",
           'aria-label': 'GitHub repository',
         },
       ],
@@ -141,7 +115,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} kubedoop.dev. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ZNCDataDev. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
