@@ -8,11 +8,11 @@
     "description": "Navbar item with label Languages"
   },
   "title": {
-    "message": "Kubedoop Platform",
+    "message": "Kubedoop",
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "Kubedoop Platform",
+    "message": "Kubedoop",
     "description": "The alt text of navbar logo"
   }
 }
