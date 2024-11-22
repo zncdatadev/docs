@@ -4,11 +4,17 @@ slug: /
 
 # 介绍
 
-Kubedoop 是基于 Kubernetes Operator 技术开发的大数据平台。通过 Kubedoop 平台，用户可以在 Kubernetes 集群中快速部署和管理数据处理任务。包括但不限于数据采集、数据存储、数据处理、数据分析等功能。
+Kubedoop Data Platform 是一个模块化、Kubernetes 原生的平台。通过 Kubedoop，用户可以简单快速地部署数据基础设施和算法基础设施，从而解决 DataOps 和 MLOps 的需求。
 
-通过借助 Kubernetes Operator 的管理能力，Kubedoop 可以自动化地管理数据处理任务的生命周期，包括任务的创建、启动、监控、调度、重启、扩缩容等。用户只需要通过简单的配置文件来定义数据处理任务，Kubedoop 就可以自动地将任务部署到 Kubernetes 集群中，并且自动地管理任务的生命周期。
+Kubedoop 包含主流数据处理组件，如 hdfs, hive, kafka superset 等，同时支持数据湖和实时数仓，满足传统 Hadoop 平台向 Kubernetes 平台迁移的需求。
 
-## Kubedoop 组件
+Kubedoop 基于 Kubernetes Operator 技术开发，通过 Operator 自动化管理数据处理任务的生命周期，包括任务创建、启动、监控、调度、重启和扩缩容。用户只需通过简单的配置文件定义数据处理任务，Kubedoop 就可以自动将任务部署到 Kubernetes 集群，并自动管理其生命周期。
+
+Kubedoop 基于 Kubernetes Operator 技术开发，通过 Operator 强大管理能力，自动化管理平台创建、启动、监控、调度、重启、扩缩容等生命周期，用户只需通过简单的配置文件定义数据处理任务，Kubedoop 就可以自动将任务部署到 Kubernetes 集群，并自动管理其生命周期。
+
+## 组件
+
+kubedoop 中的产品 Operator:
 
 - [Kubedoop Operator for Apache Airflow](https://github.com/zncdatadev/airflow-operator)
 - [Kubedoop Operator for Apache DolphinScheduler](https://github.com/zncdatadev/dolphinscheduler-operator)

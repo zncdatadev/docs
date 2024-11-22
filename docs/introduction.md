@@ -4,15 +4,19 @@ slug: /
 
 # Introduction
 
-Kubedoop is a big data platform developed based on Kubernetes Operator technology. Through the Kubedoop platform,
-users can quickly deploy and manage data processing tasks in Kubernetes clusters. This includes but is not limited to data collection, data storage,
-data processing, and data analysis functionalities.
+Kubedoop Data Platform is a modular, Kubernetes-native platform. Through Kubedoop,
+users can quickly and easily deploy data infrastructure and algorithm infrastructure to address DataOps and MLOps requirements.
 
-By leveraging the management capabilities of Kubernetes Operator, Kubedoop can automatically manage the lifecycle of data processing tasks,
+Kubedoop includes mainstream data processing components such as HDFS, Hive, Kafka, Superset, etc.,
+while supporting data lakes and real-time data warehouses to meet the migration needs from traditional Hadoop platforms to Kubernetes platforms.
+
+Built on Kubernetes Operator technology, Kubedoop automates the lifecycle management of data processing tasks,
 including task creation, startup, monitoring, scheduling, restart, and scaling. Users only need to define data processing tasks through simple configuration files,
-and Kubedoop can automatically deploy the tasks to the Kubernetes cluster and manage their lifecycle automatically.
+and Kubedoop will automatically deploy the tasks to the Kubernetes cluster and manage their lifecycle.
 
-## Kubedoop Components
+## Components
+
+Kubedoop Product Operators:
 
 - [Kubedoop Operator for Apache Airflow](https://github.com/zncdatadev/airflow-operator)
 - [Kubedoop Operator for Apache DolphinScheduler](https://github.com/zncdatadev/dolphinscheduler-operator)
@@ -28,7 +32,7 @@ and Kubedoop can automatically deploy the tasks to the Kubernetes cluster and ma
 - [Kubedoop Operator for Trino](https://github.com/zncdatadev/trino-operator)
 - [Kubedoop Operator for Apache Zookeeper](https://github.com/zncdatadev/zookeeper-operator)
 
-Built-in Kubedoop operators:
+Built-in Kubedoop Operators:
 
 - [Commons Operator](https://github.com/zncdatadev/commons-operator)
 - [Listener Operator](https://github.com/zncdatadev/listener-operator)

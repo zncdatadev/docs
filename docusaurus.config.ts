@@ -4,8 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 
 const config: Config = {
-  title: 'Kubedoop Platform',
-  tagline: 'Kubedoop Platform Documentation',
+  title: 'Kubedoop Data Platform',
+  tagline: 'Kubedoop Data Platform Documentation',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -67,9 +67,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Kubedoop Platform',
+      title: 'Kubedoop Data Platform',
       logo: {
-        alt: 'Kubedoop Platform',
+        alt: 'Kubedoop Data Platform',
         src: 'img/favicon.ico',
       },
  
