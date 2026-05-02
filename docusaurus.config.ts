@@ -27,16 +27,16 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh'],
+    locales: ['en', 'zh-Hans'],
     path: 'i18n',
     localeConfigs: {
       en: {
         htmlLang: 'en-GB',
       },
-      zh: {
+      'zh-Hans': {
         label: '中文',
         direction: 'ltr',
-        htmlLang: 'zh-cmn-Hans',
+        htmlLang: 'zh-Hans',
         path: 'zh',
       },
     },
