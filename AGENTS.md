@@ -114,7 +114,7 @@ git remote add upstream https://github.com/zncdatadev/docs.git
 
 ### Workflow Steps
 
-1. **Sync upstream**: `git fetch upstream && git merge upstream/main`
+1. **Sync upstream**: `git pull --rebase upstream main`
 2. **Create branch**: use naming convention `<type>/<short-description>`
 3. **Create worktree**: `git worktree add ../docs-<task> -b <branch-name>`
 4. **Develop and verify** in the worktree (run `npm run build`)
