@@ -4,7 +4,9 @@ This document provides an overview of the Kubedoop Data Platform architecture, i
 
 ## Platform Architecture Overview
 
-Kubedoop is a Kubernetes-native DataOps platform that manages 15+ big data components through a unified Operator framework. The platform leverages the Operator Lifecycle Manager (OLM) for Operator installation and lifecycle management, running entirely on top of Kubernetes.
+Kubedoop is a Kubernetes-native DataOps platform that manages 15+ big data components
+through a unified Operator framework. The platform leverages the Operator Lifecycle Manager
+(OLM) for Operator installation and lifecycle management, running entirely on top of Kubernetes.
 
 ```mermaid
 graph TB
@@ -210,19 +212,27 @@ Kubedoop is built on the following core design principles:
 
 ### Kubernetes Native
 
-All components are managed through Kubernetes Custom Resource Definitions (CRDs) and Operators. There are no custom orchestration layers — the platform relies entirely on the Kubernetes API for state management, scheduling, and self-healing.
+All components are managed through Kubernetes Custom Resource Definitions (CRDs)
+and Operators. There are no custom orchestration layers — the platform relies entirely
+on the Kubernetes API for state management, scheduling, and self-healing.
 
 ### Declarative Configuration
 
-Users describe the *desired state* of their data infrastructure through YAML manifests. The Operators continuously reconcile the actual state with the desired state, ensuring consistency without manual intervention.
+Users describe the *desired state* of their data infrastructure through YAML manifests.
+The Operators continuously reconcile the actual state with the desired state,
+ensuring consistency without manual intervention.
 
 ### Pluggable Storage
 
-Storage is abstracted through Kubernetes StorageClass, allowing users to choose the underlying storage backend (SSD, HDD, NFS, cloud storage) without changing their component configuration. This enables flexible deployment across different environments.
+Storage is abstracted through Kubernetes StorageClass, allowing users to choose the
+underlying storage backend (SSD, HDD, NFS, cloud storage) without changing their
+component configuration. This enables flexible deployment across different environments.
 
 ### Unified Security Model
 
-All Operators share a consistent security model through the built-in Secret Operator and Listener Operator. TLS encryption, authentication, and credential management are handled uniformly across all components.
+All Operators share a consistent security model through the built-in Secret Operator
+and Listener Operator. TLS encryption, authentication, and credential management
+are handled uniformly across all components.
 
 ### Observability
 
