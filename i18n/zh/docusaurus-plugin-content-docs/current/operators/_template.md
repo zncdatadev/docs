@@ -107,7 +107,7 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 检查集群状态：
 
 ```bash
-kubectl get {clusterkind} -n {operator-name}
+kubectl get {ClusterKind} -n {operator-name}
 ```
 
 ## 配置
@@ -222,14 +222,14 @@ spec:
    - **原因**：{为什么会发生}
    - **解决方案**：{修复步骤}
 
-> 所有 Operator 的通用问题请参阅 [故障排查](../troubleshooting)。
+> 所有 Operator 的通用问题请参阅 [Pod 中断](../core-concepts/operations/pod-disruptions.md)。
 
 ## 清理
 
 删除 {Component} 集群：
 
 ```bash
-kubectl delete {clusterkind} {cluster-name} -n {operator-name}
+kubectl delete {ClusterKind} {cluster-name} -n {operator-name}
 ```
 
 删除命名空间：
