@@ -14,7 +14,8 @@ To start using Kubedoop, you need to meet the following requirements:
 ## Install the Operator
 
 Kubedoop uses Helm charts to deploy and manage Operators.
-All charts are published to [quay.io](https://quay.io/kubedoopcharts).
+Container images are published to [quay.io](https://quay.io/kubedoopcharts) and
+charts are distributed via a Helm repository.
 
 ### Add the Helm Repository
 
@@ -57,19 +58,7 @@ kubectl create ns hive
 ## Deploy a Hive Cluster
 
 The Hive cluster is managed by the hive-operator. You can deploy a Hive
-Metastore by creating a HiveCluster custom resource:
-
-```yaml
-apiVersion: hive.kubedoop.dev/v1alpha1
-kind: HiveMetastore
-metadata:
-  name: hive-metastore
-  namespace: hive
-spec:
-  roleGroups:
-    default:
-      replicas: 1
-```
+Metastore by creating a HiveMetastore custom resource:
 
 ```bash
 kubectl apply -f - <<EOF

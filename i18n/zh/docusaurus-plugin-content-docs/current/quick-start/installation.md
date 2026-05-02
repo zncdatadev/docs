@@ -19,7 +19,8 @@ Kubernetes 集群中部署一个 Hive Metastore。
 ## 安装 Operator
 
 Kubedoop 使用 Helm Chart 来部署和管理 Operator。
-所有 Chart 发布在 [quay.io](https://quay.io/kubedoopcharts)。
+容器镜像发布在 [quay.io](https://quay.io/kubedoopcharts)，
+Chart 通过 Helm 仓库分发。
 
 ### 添加 Helm 仓库
 
@@ -63,18 +64,6 @@ kubectl create ns hive
 
 Hive 集群通过 hive-operator 来管理。你可以通过创建 HiveMetastore 自定义
 资源来部署一个 Hive Metastore：
-
-```yaml
-apiVersion: hive.kubedoop.dev/v1alpha1
-kind: HiveMetastore
-metadata:
-  name: hive-metastore
-  namespace: hive
-spec:
-  roleGroups:
-    default:
-      replicas: 1
-```
 
 ```bash
 kubectl apply -f - <<EOF
