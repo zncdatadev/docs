@@ -97,3 +97,65 @@ This repository runs the following GitHub Actions on every PR:
 - **Deploy to GitHub Pages** — only runs on main branch after merge
 
 All checks must pass before a PR can be merged.
+
+## Development Workflow
+
+All contributions follow a fork-based workflow with Git Worktree for parallel
+task development.
+
+### Git Setup
+
+```bash
+# Fork zncdatadev/docs to your personal account
+# Clone and configure remotes
+git clone https://github.com/<your-username>/docs.git
+git remote add upstream https://github.com/zncdatadev/docs.git
+```
+
+### Workflow Steps
+
+1. **Sync upstream**: `git fetch upstream && git merge upstream/main`
+2. **Create branch**: use naming convention `<type>/<short-description>`
+3. **Create worktree**: `git worktree add ../docs-<task> -b <branch-name>`
+4. **Develop and verify** in the worktree (run `npm run build`)
+5. **Push to fork**: `git push origin <branch-name>`
+6. **Open PR** against `zncdatadev/docs` main branch
+7. **Ensure all CI checks pass** (Markdown Lint, TypeScript Lint)
+8. **Code Review**: at least 1 reviewer approval required
+9. **Clean up** after merge: remove worktree and delete branch
+
+### Branch Naming
+
+| Type | Format | Example |
+|------|--------|--------|
+| New feature | `feature/<scope>-<desc>` | `feature/kafka-rebalance` |
+| Bug fix | `fix/<scope>-<desc>` | `fix/hdfs-memory-leak` |
+| Documentation | `docs/<desc>` | `docs/add-trino-operator` |
+| Refactor | `refactor/<scope>-<desc>` | `refactor/operator-go-api` |
+| Dependency | `chore/<desc>` | `chore/upgrade-k8s-0.36` |
+
+### Worktree Conventions
+
+- Each task gets its own worktree: `docs-<task-short-name>`
+- Multiple worktrees can run in parallel for the same repo
+- Clean up after merge: `git worktree remove <path>`
+
+### PR Description Template
+
+```markdown
+## Summary
+Brief description of the change.
+
+## Changes
+- Change 1
+- Change 2
+
+## Testing
+- [ ] `npm run build` passes
+- [ ] `npx tsc --noEmit` passes
+- [ ] No lines exceeding 200 characters
+- [ ] All CI checks pass
+
+## Related Issues
+Link to related issues or task IDs.
+```
