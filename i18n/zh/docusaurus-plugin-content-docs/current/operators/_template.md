@@ -1,29 +1,29 @@
 # {Operator Name}
 
-> {A one-line description of the component this Operator manages and its role in the data platform.}
+> {该 Operator 管理的组件的一句话描述及其在数据平台中的角色。}
 
 ## 概述
 
-{Brief introduction: what this component is, what problems it solves, and typical use cases. 2-3 paragraphs.}
+{简要介绍：该组件是什么，解决什么问题，典型用例。2-3 段。}
 
-{Paragraph 1: What is this component? Describe its core functionality and position in the data ecosystem.}
+{第一段：该组件是什么？描述其核心功能和在数据生态中的定位。}
 
-{Paragraph 2: What problems does it solve? What pain points does it address for users?}
+{第二段：解决什么问题？为用户解决了哪些痛点？}
 
-{Paragraph 3: Typical use cases and scenarios where this component shines.}
+{第三段：典型用例和适用场景。}
 
 ## 前置条件
 
 - Kubernetes {version}+
 - kubectl {version}+
-- {Other dependencies — e.g., if this component depends on HDFS, list HDFS Operator here}
-- Helm v3+ installed — see [Quick Start](../quick-start/installation.md)
+- {其他依赖 — 例如：如果该组件依赖 HDFS，在此列出 HDFS Operator}
+- Helm v3+ 已安装 — 参见 [快速开始](../quick-start/installation.md)
 
 ## 快速开始
 
 ### 安装 Operator
 
-Install the built-in Operators first (required dependencies):
+先安装内置 Operator（必需依赖）：
 
 ```bash
 helm install commons-operator kubedoop/commons-operator -n operators --create-namespace
@@ -37,7 +37,7 @@ helm install secret-operator kubedoop/secret-operator -n operators
 helm install {operator-name} kubedoop/{operator-name} -n operators
 ```
 
-Verify that the Operator pod is running:
+验证 Operator Pod 是否正常运行：
 
 ```bash
 kubectl get pods -n operators -l app.kubernetes.io/name={operator-name}
@@ -63,15 +63,15 @@ metadata:
     app.kubernetes.io/name: {cluster-name}
     app.kubernetes.io/instance: {cluster-name}
 spec:
-  # {Key configuration: specify the version of the component}
-  # {Add role-specific configurations here}
+  # {关键配置：指定组件版本}
+  # {在此添加角色相关配置}
 
   {roleName}:
-    # {Describe the responsibility of this role}
+    # {描述该角色的职责}
     roleGroups:
       default:
         replicas: 1
-        # {Role group-specific configuration overrides}
+        # {角色组级别的配置覆盖}
 ```
 
 ```bash
@@ -114,12 +114,12 @@ kubectl get {clusterkind} -n {operator-name}
 
 ### 角色和角色组
 
-{List the roles available in this Operator and describe each role's responsibility.}
+{列出此 Operator 中的可用角色并描述各角色的职责。}
 
 | 角色 | 描述 |
 |------|------|
-| {role-1} | {What this role does} |
-| {role-2} | {What this role does} |
+| {role-1} | {该角色的职责} |
+| {role-2} | {该角色的职责} |
 
 每个角色可以有多个角色组，通过不同的配置实现高可用、资源隔离或负载分离。
 
@@ -127,12 +127,12 @@ kubectl get {clusterkind} -n {operator-name}
 
 ### 配置项
 
-{List configurable parameters with descriptions.}
+{列出可配置的参数及说明。}
 
 | 参数 | 描述 | 默认值 |
 |------|------|--------|
-| {param-1} | {Description of the parameter} | {default-value} |
-| {param-2} | {Description of the parameter} | {default-value} |
+| {param-1} | {参数描述} | {默认值} |
+| {param-2} | {参数描述} | {默认值} |
 
 配置可以在角色级别设置，也可以在角色组级别覆盖。
 
@@ -140,9 +140,9 @@ kubectl get {clusterkind} -n {operator-name}
 
 ### 监听器和服务
 
-{If this Operator integrates with the Listener Operator for service discovery, explain the configuration.}
+{如果此 Operator 通过 Listener Operator 集成服务发现，请说明配置方式。}
 
-{Describe which listeners are available (e.g., internal, external) and how to configure them.}
+{描述可用的监听器（如 internal、external）及其配置方式。}
 
 ```yaml
 spec:
@@ -151,25 +151,25 @@ spec:
       listeners:
         {listener-name}:
           type: {internal|external}
-          # {Additional listener configuration}
+          # {额外的监听器配置}
 ```
 
-> For more details, see [Service Discovery](../core-concepts/connectivity/service-discovery.md).
+> 更多详情请参阅 [服务发现](../core-concepts/connectivity/service-discovery.md)。
 
 ### 依赖
 
-{List the dependencies this Operator has on other components and how to configure them.}
+{列出此 Operator 对其他组件的依赖及配置方式。}
 
 | 依赖组件 | 是否必需 | 描述 |
 |----------|----------|------|
-| {dep-1} | Yes | {Why this dependency is needed} |
-| {dep-2} | No | {Optional dependency description} |
+| {dep-1} | 是 | {为什么需要此依赖} |
+| {dep-2} | 否 | {可选依赖的描述} |
 
 ## 进阶配置
 
 ### 资源管理
 
-{Describe how to configure CPU, memory, and storage resources for this Operator's roles.}
+{描述如何为此 Operator 的角色配置 CPU、内存和存储资源。}
 
 ```yaml
 spec:
@@ -190,37 +190,37 @@ spec:
 
 ### Pod 调度
 
-{Describe how to control pod scheduling using affinity, tolerations, and node selectors.}
+{描述如何通过亲和性、容忍度和节点选择器控制 Pod 调度。}
 
 > 更多详情请参阅 [Pod 调度](../core-concepts/operations/pod-placement.md)。
 
 ### 认证与安全
 
-{Describe security-related configuration such as TLS, Kerberos, or internal authentication.}
+{描述安全相关配置，如 TLS、Kerberos 或内部认证。}
 
 > 更多详情请参阅 [认证](../core-concepts/security/authentication.md)。
 
 ### 日志
 
-{Describe how to configure and access logs for this component.}
+{描述如何配置和访问此组件的日志。}
 
 > 更多详情请参阅 [日志](../core-concepts/observability/logging.md)。
 
 ## 故障排查
 
-{List common issues and their resolutions specific to this Operator.}
+{列出此 Operator 的常见问题及解决方案。}
 
 ### 常见问题
 
-1. **{Issue title}**
+1. **{问题标题}**
    - **现象**：{用户看到的情况}
    - **原因**：{为什么会发生}
    - **解决方案**：{修复步骤}
 
-2. **{Issue title}**
-   - **Symptom**: {What the user sees}
-   - **Cause**: {Why this happens}
-   - **Resolution**: {Steps to fix}
+2. **{问题标题}**
+   - **现象**：{用户看到的情况}
+   - **原因**：{为什么会发生}
+   - **解决方案**：{修复步骤}
 
 > 所有 Operator 的通用问题请参阅 [故障排查](../troubleshooting)。
 
@@ -238,7 +238,7 @@ kubectl delete {clusterkind} {cluster-name} -n {operator-name}
 kubectl delete ns {operator-name}
 ```
 
-Uninstall the Operator via Helm:
+通过 Helm 卸载 Operator：
 
 ```bash
 helm uninstall {operator-name} -n operators
@@ -246,6 +246,6 @@ helm uninstall {operator-name} -n operators
 
 ## 相关链接
 
-- [{Component} Official Documentation]({upstream-url})
-- [Kubedoop Operator for {Component} on GitHub]({github-url})
-- [{Component} on GitHub]({component-github-url})
+- [{Component} 官方文档]({upstream-url})
+- [Kubedoop Operator for {Component} GitHub]({github-url})
+- [{Component} GitHub]({component-github-url})
