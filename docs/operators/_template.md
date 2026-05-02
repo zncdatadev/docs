@@ -222,7 +222,7 @@ spec:
    - **Cause**: {Why this happens}
    - **Resolution**: {Steps to fix}
 
-> 如需所有 Operator 的通用故障排查，请参阅 [故障排查](../core-concepts/operations/pod-disruptions.md)。
+> For general troubleshooting across all Operators, check the [Operations](../core-concepts/operations/pod-disruptions.md) documentation.
 
 ## Clean Up
 
