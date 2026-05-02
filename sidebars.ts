@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
       label: 'Quick Start',
       items: [
         'introduction',
+        'architecture',
         'quick-start/installation',
       ],
     },
