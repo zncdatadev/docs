@@ -107,7 +107,7 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 Check the cluster status:
 
 ```bash
-kubectl get {clusterkind} -n {operator-name}
+kubectl get {ClusterKind} -n {operator-name}
 ```
 
 ## Configuration
@@ -222,14 +222,14 @@ spec:
    - **Cause**: {Why this happens}
    - **Resolution**: {Steps to fix}
 
-> For common issues across all Operators, see [Troubleshooting](../troubleshooting).
+> For general troubleshooting across all Operators, check the [Operations](../core-concepts/operations/pod-disruptions.md) documentation.
 
 ## Clean Up
 
 Delete the {Component} cluster:
 
 ```bash
-kubectl delete {clusterkind} {cluster-name} -n {operator-name}
+kubectl delete {ClusterKind} {cluster-name} -n {operator-name}
 ```
 
 Delete the namespace:
