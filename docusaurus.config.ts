@@ -20,11 +20,13 @@ const config: Config = {
   projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
-  // Render ```mermaid fenced blocks as diagrams instead of plain code blocks.
   markdown: {
+    // Render ```mermaid fenced blocks as diagrams instead of plain code blocks.
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 
