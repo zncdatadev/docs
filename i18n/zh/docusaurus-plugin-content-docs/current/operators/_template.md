@@ -99,7 +99,7 @@ kubectl get pods -n {operator-name}
 
 预期输出：
 
-```
+```text
 NAME                                   READY   STATUS    RESTARTS   AGE
 {pod-name}-0                           1/1     Running   0          2m
 ```
