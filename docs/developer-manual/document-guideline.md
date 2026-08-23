@@ -4,9 +4,9 @@ If you want to participate in document writing, please read this document to und
 
 The project documentation is built based on [docusaurus](https://docusaurus.io/), and the documentation source code is located in the `docs` directory.
 
-The default language of the current document is English, and it now supports both Chinese and English. If you need to contribute English documents, 
+The default language of the current document is English, and it now supports both Chinese and English. If you need to contribute English documents,
 you can write directly in the `docs` directory. If you contribute Chinese documents, you need to write in the `i18n/zh/docusaurus-plugin-content-docs` directory.
-After writing, please run `yarn write-translations --locale zh` to generate the Chinese internationalization configuration, 
+After writing, please run `npm run write-translations -- --locale zh-Hans` to generate the Chinese internationalization configuration,
 and then adjust the Chinese internationalization configuration in `i18n/zh`.
 
 ## Writing Norms
