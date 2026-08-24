@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[7632],{7632(e,a,b){b.d(a,{createWardleyServices:()=>k.J});var k=b(9427);b(4954)}}]);

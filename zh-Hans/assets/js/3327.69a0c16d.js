@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[3327],{3327(e,a,k){k.d(a,{createPacketServices:()=>b.$});var b=k(3263);k(4954)}}]);

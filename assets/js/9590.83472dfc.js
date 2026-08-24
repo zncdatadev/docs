@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[9590],{9590(e,a,b){b.d(a,{createPieServices:()=>k.f});var k=b(6041);b(4954)}}]);

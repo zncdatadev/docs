@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[2355],{2355(e,o,a){a.d(o,{createEventModelingServices:()=>b.g});var b=a(2688);a(4954)}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[7636],{7636(e,a,b){b.d(a,{createCynefinServices:()=>k.t});var k=b(3279);b(4954)}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[7089],{7089(e,c,u){u.d(c,{createArchitectureServices:()=>a.S});var a=u(5796);u(4954)}}]);

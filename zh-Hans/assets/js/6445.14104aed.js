@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[6445],{6445(e,o,a){a.d(o,{createInfoServices:()=>b.v});var b=a(4614);a(4954)}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[4583],{8198(o,s,u){u.r(s),u.d(s,{default:()=>n});u(8774);var e=u(4586);u(1107);var t=u(6347),a=u(4848);function n(){const{siteConfig:o}=(0,e.A)();return(0,a.jsx)(t.rd,{to:"docs/"})}}}]);

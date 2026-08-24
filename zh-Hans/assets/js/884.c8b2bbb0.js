@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkubedoop=globalThis.webpackChunkkubedoop||[]).push([[884],{884(e,a,b){b.d(a,{createTreemapServices:()=>k.d});var k=b(6527);b(4954)}}]);
