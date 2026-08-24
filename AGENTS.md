@@ -2,85 +2,161 @@
 
 Instructions for AI coding agents working with this repository.
 
+`CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; never edit `CLAUDE.md`.
+
 ## Project Overview
 
-This is the documentation site for **Kubedoop Data Platform** (<https://kubedoop.dev>),
-built with [Docusaurus 3](https://docusaurus.io/). The site is deployed to GitHub
-Pages and supports both English and Chinese (zh-Hans).
+Documentation site for **Kubedoop Data Platform** (<https://kubedoop.dev>), built with
+[Docusaurus 3](https://docusaurus.io/) and deployed to GitHub Pages. Bilingual: English
+(`en`, default) and Chinese (`zh-Hans`).
+
+This repository contains **documentation only** — no Kubedoop product code. The Operators
+it documents live in sibling repositories under <https://github.com/zncdatadev>.
 
 ## Tech Stack
 
 - **Framework**: Docusaurus 3.10 (React 19, TypeScript 5.8)
-- **Package Manager**: npm
-- **Deployment**: GitHub Pages (`gh-pages` branch)
+- **Package manager**: npm. The lockfile is committed — use `npm ci`, not `npm install`
+- **Node**: `>=18` per `package.json`; CI runs 22
+- **Deployment**: GitHub Pages via the `gh-pages` branch, published by CI on main pushes
 
 ## Repository Structure
 
 ```text
-docs/                  # English documentation source
-i18n/zh/docusaurus-plugin-content-docs/current/  # Chinese documentation source
-src/                   # React components and custom CSS
-docusaurus.config.ts   # Site configuration (navbar, footer, i18n, plugins)
-sidebars.ts            # Sidebar navigation structure
-static/                # Static assets (images, favicons)
+docs/                          # English documentation source (default locale)
+i18n/zh/docusaurus-plugin-content-docs/current/   # Chinese documentation source
+i18n/en/, i18n/zh/             # UI-string translations (generated, not prose)
+src/                           # React components and custom CSS
+static/                        # Static assets (images, favicons, CNAME)
+docusaurus.config.ts           # Site config (navbar, footer, i18n, markdown, themes)
+sidebars.ts                    # Sidebar navigation structure
+.markdownlint.yml              # Markdown rule config
+.github/workflows/gh-page.yml  # CI: lint, build, deploy
 ```
 
-## Common Commands
+## Verify Before Claiming Done
+
+One command mirrors CI:
 
 ```bash
-npm install            # Install dependencies
-npm run build          # Production build (en + zh-Hans)
-npm start              # Local dev server with hot reload
-npm run typecheck      # TypeScript type checking (npx tsc --noEmit)
+npm run verify        # lint:md + typecheck + build (both locales)
 ```
 
-## Development Rules
+Or step by step:
 
-### Before Submitting a PR
+```bash
+npm ci                # install exactly what the lockfile pins
+npm run lint:md       # markdownlint over *.md, docs/**, i18n/**
+npm run typecheck     # tsc (noEmit comes from @docusaurus/tsconfig)
+npm run build         # production build, en + zh-Hans
+npm start             # dev server, hot reload, default locale only
+```
 
-1. Run `npm run build` and ensure it succeeds for both locales
-2. Run `npx tsc --noEmit` and ensure no TypeScript errors
-3. Check for markdown lint issues — no line should exceed 200 characters
-4. Verify new pages appear correctly in the sidebar (`sidebars.ts`)
+`npm run verify` passing is the bar for "done". Do not report a change as complete
+without running it, and do not tick a PR checklist box you did not actually run.
 
-### Adding Documentation
+### Traps that have already cost time here
 
-- **English docs**: place in `docs/` directory
-- **Chinese docs**: place in `i18n/zh/docusaurus-plugin-content-docs/current/`
-- Filenames use kebab-case (e.g., `service-discovery.md`)
-- After adding Chinese docs, run `npm run write-translations -- --locale zh-Hans`
-  (the `--` separator is required, otherwise npm swallows `--locale` and the
-  bare `zh` is read as a site directory)
+**Use the repo's pinned markdownlint, not a global one.** `markdownlint-cli2` is a
+devDependency pinned to an exact version and `npm run lint:md` uses it. Newer versions
+enforce rules this repo has never enforced: 0.23 adds `MD060` (table-column-style),
+which flags roughly 46 tables that CI considers clean. `npx markdownlint-cli2` without a
+version pulls the latest and will send you fixing violations that do not exist.
 
-### Sidebar Updates
+**"Max 200 characters" is not literal.** `MD013` runs with `strict: false`, which exempts
+lines having no whitespace past the limit — an unbreakable long line (a URL, a long word)
+is not a violation. Do not rewrap prose to satisfy a rule that is not firing. Ask
+`npm run lint:md`, do not count characters.
 
-All sidebar navigation is defined in `sidebars.ts`. New documentation pages
-must be added to the appropriate category in this file to appear in the nav.
+**Do not measure line length in bytes.** `MD013` counts characters. `awk 'length($0)'`
+counts bytes, so CJK prose (3 bytes per character) looks 3x longer than it is and
+produces phantom violations.
 
-### i18n Notes
+**Mermaid cannot be verified from build output.** Diagrams render client-side, so the SSR
+HTML holds an empty container either way. `grep language-mermaid build/...` returning 0
+only proves the fence was intercepted, not that anything drew. To confirm a diagram
+renders, load the page in a browser and look for `.docusaurus-mermaid-container svg`.
 
-- Default locale: `en`
-- Second locale: `zh-Hans` (BCP 47 compliant)
-- Locale configs are in `docusaurus.config.ts` under `i18n.localeConfigs`
-- Do NOT use `zh` as a locale key — use `zh-Hans` (Docusaurus 3.10+ requirement)
+## Documentation Content
 
-### Markdown Rules
+### Current state: early skeleton
 
-- Max line length: 200 characters
-- Use fenced code blocks with language hints (`yaml`, `bash`, `typescript`)
-- For Mermaid diagrams, use fenced blocks with `mermaid` language hint
+**13 of 24 pages are empty or single-heading placeholders.** Check before editing:
+
+```bash
+find docs -name '*.md' -size -100c | sort     # the placeholders
+```
+
+Treat a placeholder as "not written yet" rather than a page to patch around.
+
+### The en and zh trees must mirror each other exactly
+
+Every file in `docs/` has a counterpart at the same relative path under
+`i18n/zh/docusaurus-plugin-content-docs/current/`. They currently match 1:1. Adding a
+page in one language only breaks the convention silently: Docusaurus falls back to the
+English source, so the build still passes.
+
+```bash
+diff <(cd docs && find . -name '*.md' | sort) \
+     <(cd i18n/zh/docusaurus-plugin-content-docs/current && find . -name '*.md' | sort)
+```
+
+### Known inconsistency — do not copy it
+
+`docs/developer-manual/first-commiter.md` and `docs/developer-manual/develop-guideline.md`
+hold **Chinese prose inside the English tree**, and `first-commiter.md` is byte-identical
+to its `zh` counterpart. Write new pages in the language of the tree they live in.
+
+### Adding a page
+
+- English goes in `docs/`, Chinese in `i18n/zh/docusaurus-plugin-content-docs/current/`
+- Filenames are kebab-case (`service-discovery.md`)
+- Add both languages in the same change
+- Check whether the sidebar needs an entry (see below)
+- After adding UI strings, regenerate translations:
+
+  ```bash
+  npm run write-translations -- --locale zh-Hans
+  ```
+
+  The `--` separator is required. Without it npm swallows `--locale` and passes a bare
+  `zh` to docusaurus as a site directory, failing with `ENOENT ... lstat '<repo>/zh'`.
+
+### New Operator pages
+
+Start from `docs/operators/_template.md`, which defines the standard sections: Overview,
+Prerequisites, Quick Start, Configuration, Advanced, Troubleshooting, Clean Up, Related
+Links. Copy it into both language trees.
+
+## Sidebar
+
+`sidebars.ts` mixes hand-written entries with `autogenerated` blocks, so whether you must
+touch it depends on where the page lands:
+
+| Page location | Sidebar entry |
+|---------------|---------------|
+| `core-concepts/*/`, `operators/`, `developer-manual/`, `reference/`, `user-manual/environment/` | Automatic (`autogenerated`) |
+| Repository top level and `quick-start/` | Manual — add it to `sidebars.ts` |
+
+## Markdown Rules
+
+- Fenced code blocks need a language hint; use `text` for plain output (`MD040`)
+- Mermaid diagrams use fenced blocks with the `mermaid` hint. Rendering is wired up in
+  `docusaurus.config.ts` (`markdown.mermaid` plus `@docusaurus/theme-mermaid`), with the
+  diagram theme mapped to the site colour mode
 - Prefer relative links for internal references (`../core-concepts/...`)
+- `onBrokenLinks: 'throw'` — a broken internal link fails the build
 
-### Operator Documentation Template
+## i18n Notes
 
-When creating documentation for a new Operator, use the template at
-`docs/operators/_template.md` as a starting point. The template defines
-the standard sections: Overview, Prerequisites, Quick Start, Configuration,
-Advanced, Troubleshooting, Clean Up, Related Links.
+- Default locale `en`, second locale `zh-Hans`
+- `zh-Hans` is the **locale key**; `zh` is only the URL **path**, set in
+  `i18n.localeConfigs['zh-Hans'].path`. Never use `zh` as a locale key
+- `npm start` serves the default locale only — use `npm run build` to exercise both
 
 ## Commit Message Conventions
 
-Follow [Conventional Commits](https://www.conventionalcommits.org/):
+[Conventional Commits](https://www.conventionalcommits.org/):
 
 ```text
 <type>(<scope>): <subject>
@@ -90,41 +166,52 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 Example: `docs(operators): add kafka-operator documentation`
 
-## CI Checks
+Use the body to explain *why* when the reason is not obvious from the diff.
 
-This repository runs the following GitHub Actions on every PR:
+## CI
 
-- **Markdown Lint** — line length, formatting rules
-- **TypeScript Lint** — type checking for `.ts`/`.tsx` files
-- **Deploy to GitHub Pages** — only runs on main branch after merge
+`.github/workflows/gh-page.yml`:
 
-All checks must pass before a PR can be merged.
+| Job | Runs on | Does |
+|-----|---------|------|
+| **Lint** | PRs and main pushes | `npm run lint` (markdownlint + tsc) |
+| **Build** | PRs only | `npm run build`, both locales |
+| **Deploy to GitHub Pages** | main pushes only | build, then publish to `gh-pages` |
+
+CI invokes the same npm scripts you run locally, so a local `npm run verify` passing
+should mean CI passes.
 
 ## Development Workflow
 
-All contributions follow a fork-based workflow with Git Worktree for parallel
-task development.
+Fork-based, with git worktrees for parallel tasks.
 
-### Git Setup
+### Setup
 
 ```bash
-# Fork zncdatadev/docs to your personal account
-# Clone and configure remotes
 git clone https://github.com/<your-username>/docs.git
+cd docs
 git remote add upstream https://github.com/zncdatadev/docs.git
 ```
 
-### Workflow Steps
+### Steps
 
-1. **Sync upstream**: `git pull --rebase upstream main`
-2. **Create branch**: use naming convention `<type>/<short-description>`
-3. **Create worktree**: `git worktree add ../docs-<task> -b <branch-name>`
-4. **Develop and verify** in the worktree (run `npm run build`)
-5. **Push to fork**: `git push origin <branch-name>`
-6. **Open PR** against `zncdatadev/docs` main branch
-7. **Ensure all CI checks pass** (Markdown Lint, TypeScript Lint)
-8. **Code Review**: at least 1 reviewer approval required
-9. **Clean up** after merge: remove worktree and delete branch
+1. Sync: `git fetch upstream && git switch main && git merge --ff-only upstream/main`
+2. Branch off upstream main — see naming below
+3. Optional worktree: `git worktree add ../docs-<task> -b <branch-name>`
+4. Develop, then run `npm run verify`
+5. Push to your fork: `git push -u origin <branch-name>`
+6. Open a PR against `zncdatadev/docs` main
+7. All CI checks must pass; one reviewer approval is required
+8. Clean up after merge: `git worktree remove <path>` and delete the branch
+
+### Do not stack PRs
+
+Branch every PR off upstream `main`, never off another open PR's branch. A stacked PR
+carries its parent's commits, and if the two merge out of order the same change lands
+twice. This has already happened here: #35 was stacked on #33, both merged, and
+`docusaurus.config.ts` ended up with duplicate `markdown` and `themes` keys — which broke
+`tsc` on main and blocked every deploy until #36. If a change depends on another, wait
+for the parent to merge, then rebase onto the new main.
 
 ### Branch Naming
 
@@ -134,13 +221,7 @@ git remote add upstream https://github.com/zncdatadev/docs.git
 | Bug fix | `fix/<scope>-<desc>` | `fix/hdfs-memory-leak` |
 | Documentation | `docs/<desc>` | `docs/add-trino-operator` |
 | Refactor | `refactor/<scope>-<desc>` | `refactor/operator-go-api` |
-| Dependency | `chore/<desc>` | `chore/upgrade-k8s-0.36` |
-
-### Worktree Conventions
-
-- Each task gets its own worktree: `docs-<task-short-name>`
-- Multiple worktrees can run in parallel for the same repo
-- Clean up after merge: `git worktree remove <path>`
+| Chore, deps, CI | `chore/<desc>` | `chore/upgrade-k8s-0.36` |
 
 ### PR Description Template
 
@@ -153,11 +234,13 @@ Brief description of the change.
 - Change 2
 
 ## Testing
-- [ ] `npm run build` passes
-- [ ] `npx tsc --noEmit` passes
-- [ ] No lines exceeding 200 characters
-- [ ] All CI checks pass
+- [ ] `npm run verify` passes (lint + typecheck + build, both locales)
+- [ ] New pages added to both `docs/` and the `zh` tree
+- [ ] New pages appear in the sidebar
 
 ## Related Issues
 Link to related issues or task IDs.
 ```
+
+Record what you actually ran. An honest note about what was skipped is worth more than a
+ticked box that nobody verified.
