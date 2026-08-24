@@ -4,7 +4,7 @@ Instructions for AI coding agents working with this repository.
 
 ## Project Overview
 
-This is the documentation site for **Kubedoop Data Platform** (https://kubedoop.dev),
+This is the documentation site for **Kubedoop Data Platform** (<https://kubedoop.dev>),
 built with [Docusaurus 3](https://docusaurus.io/). The site is deployed to GitHub
 Pages and supports both English and Chinese (zh-Hans).
 
@@ -16,7 +16,7 @@ Pages and supports both English and Chinese (zh-Hans).
 
 ## Repository Structure
 
-```
+```text
 docs/                  # English documentation source
 i18n/zh/docusaurus-plugin-content-docs/current/  # Chinese documentation source
 src/                   # React components and custom CSS
@@ -48,7 +48,9 @@ npm run typecheck      # TypeScript type checking (npx tsc --noEmit)
 - **English docs**: place in `docs/` directory
 - **Chinese docs**: place in `i18n/zh/docusaurus-plugin-content-docs/current/`
 - Filenames use kebab-case (e.g., `service-discovery.md`)
-- After adding Chinese docs, run `npm run write-translations --locale zh`
+- After adding Chinese docs, run `npm run write-translations -- --locale zh-Hans`
+  (the `--` separator is required, otherwise npm swallows `--locale` and the
+  bare `zh` is read as a site directory)
 
 ### Sidebar Updates
 
@@ -80,7 +82,7 @@ Advanced, Troubleshooting, Clean Up, Related Links.
 
 Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
-```
+```text
 <type>(<scope>): <subject>
 ```
 
