@@ -22,7 +22,7 @@ them.
 
 ## Prerequisites
 
-- Kubernetes 1.29+
+- Kubernetes — see [supported versions](../user-manual/environment/kubernetes.md#supported-versions)
 - kubectl
 - Helm v3+ — see [Installation](../quick-start/installation.md)
 - An S3-compatible object store holding the event logs, reachable from the cluster

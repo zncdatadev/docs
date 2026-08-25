@@ -37,7 +37,9 @@ Kubedoop 不是单个仓库，各部分都在
 由 Makefile 在首次使用时下载到仓库的 `bin/` 目录。不要全局安装它们，
 版本不一致会导致本地失败而 CI 无法复现（反之亦然）。
 
-Kubernetes 支持的最低版本是 1.29。
+端到端测试运行在 [Kubernetes](../user-manual/environment/kubernetes.md#支持的版本) 页列出的版本上。
+注意各 Makefile 里的 `KIND_K8S_VERSION` 只是本地集群的默认值，比 CI 实际覆盖的版本旧——
+CI 会用自己的矩阵覆盖它。
 
 ## 仓库结构
 
