@@ -19,7 +19,7 @@ title: Spark
 
 ## 前置条件
 
-- Kubernetes 1.29+
+- Kubernetes —— 参见[支持的版本](../user-manual/environment/kubernetes.md#支持的版本)
 - kubectl
 - Helm v3+ —— 参见[安装](../quick-start/installation.md)
 - 一个集群内可访问、存放事件日志的 S3 兼容对象存储

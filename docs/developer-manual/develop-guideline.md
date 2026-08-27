@@ -38,7 +38,10 @@ Everything else — `controller-gen`, `kustomize`, `setup-envtest`, `golangci-li
 downloaded into the repository's `bin/` directory by the Makefile on first use. Do not install those
 globally; a mismatched version is a source of failures that do not reproduce in CI.
 
-Kubernetes 1.29 is the supported floor.
+End-to-end tests run against the Kubernetes versions listed in
+[Kubernetes](../user-manual/environment/kubernetes.md#supported-versions). Note that
+`KIND_K8S_VERSION` in each Makefile is only the default for a local cluster and is older than what
+CI exercises — CI overrides it with its own matrix.
 
 ## Repository layout
 
