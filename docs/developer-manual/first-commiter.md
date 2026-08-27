@@ -1,84 +1,118 @@
+---
+title: First Contribution
+---
 
-# 第一次贡献
+If this is your first time contributing on GitHub, the steps below will get you started. For the
+conventions this project expects — branch names, commit messages, what to run before opening a pull
+request — see [Collaboration Guide](./collaboration.md) and
+[Development Guideline](./develop-guideline.md).
 
-如果你是第一次在 Github 上贡献代码，请参考如下步骤快速开始：
+## Fork the project
 
-## Fork 项目
-
-- 首先需要fork这个项目, 进入项目页面, 点击右上角的Fork按钮
-- 你的 github 帐号中会出现相应名称的项目, 例如: `<your_name>/docs`
-- 在本地电脑(Linux)上使用以下命令克隆项目到本地
+- Open the project page and click **Fork** in the top right
+- A copy appears under your account, for example `<your_name>/docs`
+- Clone it locally:
 
 ```bash
 git clone https://github.com/<your_name>/docs
 ```
 
-## 获取最新源代码
+## Track the upstream repository
 
-将本地个人仓库和上游仓库关联
+Link your local clone to the upstream repository:
 
 ```bash
-git remote add upstream https://github.com/kubedoop.dev/docs
+git remote add upstream https://github.com/zncdatadev/docs
 ```
 
-同步最新源代码
+Then sync:
 
 ```bash
 git pull upstream main
 ```
 
-现在我们在 fork 来的 `main` 分支上, 这个 `main` 留作跟踪 `upstream` 的远程代码
+You are now on the `main` branch of your fork, which is kept for tracking `upstream`. Do not commit
+to it directly.
 
-## 创建分支
+## Create a branch
 
-现在开始在本地开发，并准备贡献代码。
+Do your work on a branch rather than on `main`.
 
-按照国际惯例，我们一般不在 `main` 分支上开发，而是创建一个新的分支，然后在新的分支上开发，开发完成后再合并到 `main` 分支。
+Name the branch for the kind of change you are making:
 
-首先明确我们要不贡献的代码是一个新的功能特性还是修复一个 bug 。如果是新增一个功能特性，需要创建一个基于 `feature/` 开头的
-分支，如果是修复一个 bug ，在创建一个基于 `fix/` 开头的分支。
+| Type | Format | Example |
+|------|--------|---------|
+| New feature | `feature/<scope>-<desc>` | `feature/kafka-rebalance` |
+| Bug fix | `fix/<scope>-<desc>` | `fix/hdfs-memory-leak` |
+| Documentation | `docs/<desc>` | `docs/add-trino-operator` |
+| Refactor | `refactor/<scope>-<desc>` | `refactor/operator-go-api` |
+| Chore, deps, CI | `chore/<desc>` | `chore/upgrade-k8s-0.36` |
 
 ```bash
-git checkout -b fix/foo-error
+git switch -c fix/foo-error
 ```
 
-然后在这个分支上进行代码开发，并在开发完成后提交代码。
+Make your changes, then commit. Commit messages follow
+[Conventional Commits](https://www.conventionalcommits.org/):
 
 ```bash
 git commit -a -m "fix: foo error"
 ```
 
-## 合并修改
+## Rebase before you push
 
-一个常见的问题是远程的 upstream (swoole/swoole-src) 有了新的更新, 从而会导致我们提交的 Pull Request 时会导致冲突, 因此我们可以在提交前先把远程其他开发者的commit和我们的commit合并.
+While you were working, `upstream` probably moved. Rebasing onto the latest `main` first means your
+pull request applies cleanly instead of arriving with conflicts.
 
-首先我们需要切换到 `main` 分支, 然后同步最新的代码
+Update `main`:
 
 ```bash
-git checkout main
+git switch main
 git pull upstream main
 ```
 
-然后切换回我们的开发分支, 并合并 `main` 分支
+Then rebase your branch onto it:
 
 ```bash
-git checkout fix/foo-error
+git switch fix/foo-error
 git rebase main
 ```
 
-如果有冲突, 请解决冲突, 然后继续合并
+If there are conflicts, resolve them and continue:
 
 ```bash
 git add .
 git rebase --continue
 ```
 
-最后提交代码
+Then push to your fork:
 
 ```bash
 git push origin fix/foo-error
 ```
 
-## 提交 Pull Request
+If you had already pushed the branch before rebasing, the push will be rejected because the history
+changed. Force-push your own branch:
 
-在 Github 的项目中，切换到刚刚推送的分支，点击 `Pull Request` 按钮，填写相应的信息，然后提交 Pull Request。
+```bash
+git push --force-with-lease origin fix/foo-error
+```
+
+## Open a pull request
+
+Go to the project on GitHub, switch to the branch you just pushed, click **Pull Request**, and fill
+in the description.
+
+Before you do, run the checks locally so CI does not fail on something you could have caught:
+
+```bash
+npm run verify
+```
+
+All CI checks must pass, and one reviewer approval is required, before a pull request can be merged.
+
+## Related
+
+- [Collaboration Guide](./collaboration.md)
+- [Development Guideline](./develop-guideline.md)
+- [Document Writing Guidelines](./document-guideline.md)
