@@ -1,84 +1,115 @@
+---
+title: 第一次贡献
+---
 
-# 第一次贡献
-
-如果你是第一次在 Github 上贡献代码，请参考如下步骤快速开始：
+如果你是第一次在 GitHub 上贡献代码，按下面的步骤就能快速开始。至于本项目期望的各项约定——
+分支命名、提交信息、提 PR 前要跑什么——参见[协作指南](./collaboration.md)和
+[开发指南](./develop-guideline.md)。
 
 ## Fork 项目
 
-- 首先需要fork这个项目, 进入项目页面, 点击右上角的Fork按钮
-- 你的 github 帐号中会出现相应名称的项目, 例如: `<your_name>/docs`
-- 在本地电脑(Linux)上使用以下命令克隆项目到本地
+- 打开项目页面，点击右上角的 **Fork**
+- 你的账号下会出现一份副本，例如 `<your_name>/docs`
+- 克隆到本地：
 
 ```bash
 git clone https://github.com/<your_name>/docs
 ```
 
-## 获取最新源代码
+## 关联上游仓库
 
-将本地个人仓库和上游仓库关联
+把本地克隆与上游仓库关联：
 
 ```bash
-git remote add upstream https://github.com/kubedoop.dev/docs
+git remote add upstream https://github.com/zncdatadev/docs
 ```
 
-同步最新源代码
+然后同步：
 
 ```bash
 git pull upstream main
 ```
 
-现在我们在 fork 来的 `main` 分支上, 这个 `main` 留作跟踪 `upstream` 的远程代码
+现在你在自己 fork 的 `main` 分支上，这个 `main` 留作跟踪 `upstream`，不要直接往上面提交。
 
 ## 创建分支
 
-现在开始在本地开发，并准备贡献代码。
+请在分支上开发，而不是在 `main` 上。
 
-按照国际惯例，我们一般不在 `main` 分支上开发，而是创建一个新的分支，然后在新的分支上开发，开发完成后再合并到 `main` 分支。
+分支名要体现改动的类型：
 
-首先明确我们要不贡献的代码是一个新的功能特性还是修复一个 bug 。如果是新增一个功能特性，需要创建一个基于 `feature/` 开头的
-分支，如果是修复一个 bug ，在创建一个基于 `fix/` 开头的分支。
+| 类型 | 格式 | 示例 |
+|------|------|------|
+| 新功能 | `feature/<scope>-<desc>` | `feature/kafka-rebalance` |
+| Bug 修复 | `fix/<scope>-<desc>` | `fix/hdfs-memory-leak` |
+| 文档 | `docs/<desc>` | `docs/add-trino-operator` |
+| 重构 | `refactor/<scope>-<desc>` | `refactor/operator-go-api` |
+| 杂项、依赖、CI | `chore/<desc>` | `chore/upgrade-k8s-0.36` |
 
 ```bash
-git checkout -b fix/foo-error
+git switch -c fix/foo-error
 ```
 
-然后在这个分支上进行代码开发，并在开发完成后提交代码。
+改完之后提交。提交信息遵循
+[Conventional Commits](https://www.conventionalcommits.org/)：
 
 ```bash
 git commit -a -m "fix: foo error"
 ```
 
-## 合并修改
+## 推送前先 rebase
 
-一个常见的问题是远程的 upstream (swoole/swoole-src) 有了新的更新, 从而会导致我们提交的 Pull Request 时会导致冲突, 因此我们可以在提交前先把远程其他开发者的commit和我们的commit合并.
+在你开发期间，`upstream` 多半已经往前走了。先 rebase 到最新的 `main`，
+可以让你的 PR 干净地应用上去，而不是带着冲突提交过来。
 
-首先我们需要切换到 `main` 分支, 然后同步最新的代码
+先更新 `main`：
 
 ```bash
-git checkout main
+git switch main
 git pull upstream main
 ```
 
-然后切换回我们的开发分支, 并合并 `main` 分支
+再把你的分支 rebase 到它上面：
 
 ```bash
-git checkout fix/foo-error
+git switch fix/foo-error
 git rebase main
 ```
 
-如果有冲突, 请解决冲突, 然后继续合并
+如果有冲突，解决后继续：
 
 ```bash
 git add .
 git rebase --continue
 ```
 
-最后提交代码
+然后推送到你的 fork：
 
 ```bash
 git push origin fix/foo-error
 ```
 
+如果这个分支在 rebase 之前已经推送过，这次推送会被拒绝，因为历史变了。
+对你自己的分支强制推送即可：
+
+```bash
+git push --force-with-lease origin fix/foo-error
+```
+
 ## 提交 Pull Request
 
-在 Github 的项目中，切换到刚刚推送的分支，点击 `Pull Request` 按钮，填写相应的信息，然后提交 Pull Request。
+在 GitHub 上进入项目，切换到刚推送的分支，点击 **Pull Request**，填写说明。
+
+提交之前先在本地跑一遍检查，免得 CI 挂在你本可以提前发现的问题上：
+
+```bash
+npm run verify
+```
+
+所有 CI 检查通过、并获得一位 reviewer 批准后，PR 才能合并。
+
+## 相关内容
+
+- [协作指南](./collaboration.md)
+- [开发指南](./develop-guideline.md)
+- [文档编写规范](./document-guideline.md)
